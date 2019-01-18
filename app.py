@@ -8,6 +8,7 @@ def index():
 
 @app.route('/json-example', methods=['POST'])
 def json_example():
+    print(request.get_json())
     print(request.form)
     req_data = request.form
     print(req_data)
