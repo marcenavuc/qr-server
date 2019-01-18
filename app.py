@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-
+import json
 app = Flask(__name__)
 
 @app.route('/')
@@ -11,7 +11,8 @@ def json_example():
     print(request.get_json())
     req_data = request.get_json()
     name = req_data['id']
-    return '{id:' + 'name}'
+    print(json.dumps({'id': name}))
+    return json.dumps({'id': name})
 
 @app.route('/wake-up')
 def wake_up():
