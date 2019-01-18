@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Hellow,this should be a table with'
+    return 'v: 1.0.0'
 
 @app.route('/json-example', methods=['POST'])
 def json_example():
