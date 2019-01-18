@@ -11,7 +11,7 @@ def json_example():
     print(request.get_json())
     req_data = request.get_json()
     name = req_data['id']
-    return '{id:}'.format(name)
+    return '{id:{}}'.format(name)
 
 @app.route('/wake-up')
 def wake_up():
