@@ -6,8 +6,7 @@ try:
                                   port = "5432",
                                   database = "df87fg6nok0dv8")
     cursor = connection.cursor()
-    id = 1
-    #insert_data = 'DO $$ BEGIN IF (SELECT has_come from qr_students WHERE id = '+ id + ') THEN RAISE NOTICE "has_come";ELSE IF ((SELECT COUNT(*) from qr_students WHERE id = '+ id + ') > 0) THEN UPDATE qr_students SET has_come = "t" WHERE id = '+ id + '; RAISE NOTICE "true"; ELSE RAISE NOTICE "no"; END IF; END IF; END $$;'
+    id = 123
     ins_data = '''SELECT has_come from qr_students WHERE id = {};'''.format(id)
     cursor.execute(ins_data)
     connection.commit()

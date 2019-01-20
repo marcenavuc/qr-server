@@ -53,10 +53,10 @@ def json_example():
         cursor.execute(insert_data)
         connection.commit()
         response = cursor.fetchall()[0][0]
-        return json.dumps(response)
+        return json.dumps({"res": response})
     except (Exception, psycopg2.Error) as error:
         print(error)
-        return json.dumps(error)
+        return json.dumps({"res": "w"})
 
 @app.route('/wake-up')
 def wake_up():
