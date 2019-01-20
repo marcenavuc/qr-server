@@ -61,5 +61,5 @@ def wake_up():
     return 'OK'
 
 if __name__ == "__main__":
-    app.secret_key = os.urandom(12)
+    app.secret_key = "mashine_learning"
     app.run()
