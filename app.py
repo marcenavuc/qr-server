@@ -62,4 +62,5 @@ def wake_up():
 
 if __name__ == "__main__":
     app.secret_key = "mashine_learning"
+    app.config['SESSION_TYPE'] = 'filesystem'
     app.run()
