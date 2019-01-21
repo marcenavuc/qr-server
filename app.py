@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request, redirect, session
 import json
 import psycopg2
-import os
 
 app = Flask(__name__)
 app.secret_key = "mashine_learning"
 app.config['SESSION_TYPE'] = 'filesystem'
+
+@app.route('/wake-up')
+def wake_up():
+    return ""
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
