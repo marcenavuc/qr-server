@@ -52,7 +52,7 @@ def json_example():
         cursor.execute(insert_data)
         connection.commit()
         response = cursor.fetchall()[0][0]
-        cursor.execute('''UPDATE qr_students SET has_come = "t" WHERE id = {}'''.format(id))
+        cursor.execute('''UPDATE qr_students SET has_come = true WHERE id = {}'''.format(id))
         connection.commit()
         return json.dumps({"res": response})
     except (Exception, psycopg2.Error) as error:
