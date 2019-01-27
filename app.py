@@ -30,7 +30,6 @@ def table():
             cursor.execute("SELECT * from qr_students")
             connection.commit()
             response = cursor.fetchall()
-            print(response)
             return render_template('table/table.html', data=sorted(response))
         except (Exception, psycopg2.Error) as error:
             print(error)
