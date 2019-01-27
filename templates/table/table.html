@@ -20,8 +20,7 @@
     <thead>
     <tr>
         <th class="text-left">Номер</th>
-        <th class="text-left">Имя</th>
-        <th class="text-center">Фамилия</th>
+        <th class="text-left">ФИО</th>
         <th class="text-left">Пришел</th>
     </tr>
     </thead>
@@ -30,8 +29,11 @@
     <tr>
         <td class="text-left">{{ person[0] }}</td>
         <td class="text-left">{{ person[1] }}</td>
-        <td class="text-center">{{ person[2] }}</td>
-        <td class="text-left">{{ person[3] }}</td>
+        {% if person[2] %}
+            <td class="text-center">Да</td>
+        {% else %}
+            <td class="text-center">Нет</td>
+        {% endif %}
     </tr>
     {% endfor %}
     </tbody>
