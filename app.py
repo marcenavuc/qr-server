@@ -55,12 +55,13 @@ def json_example():
         connection.commit()
         print(response, response[0], id)
         visited = response[0]
-        if id <= 246:
-            row = (id // 25) + 1
-            place = id % 25
+        num_id = int(id)
+        if num_id <= 246:
+            row = (num_id // 25) + 1
+            place = num_id % 25
         else:
             row = 11
-            place = id - 246
+            place = num_id - 246
         return json.dumps({
             "row": row,
             "place": place,
