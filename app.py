@@ -50,10 +50,21 @@ def json_example():
         cursor = connection.cursor()
         cursor.execute(insert_data)
         connection.commit()
-        response = cursor.fetchall()[0][0]
+        response = cursor.fetchall()
         cursor.execute('''UPDATE release SET visited = true WHERE id = {};'''.format(id))
         connection.commit()
-        return json.dumps({"res": response})
+        if response[0] <= 246:
+            row = response[0] // 25
+            place = response[0] % 25
+        else:
+            row = 11
+            place = response[0] - 246
+        return json.dumps({
+            "num": response[0],
+            "name": response[1],
+            "row": row,
+            "place": place
+        })
     except (Exception, psycopg2.Error) as error:
         print(error)
         return json.dumps({"res": "w"})
