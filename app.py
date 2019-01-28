@@ -53,14 +53,13 @@ def json_example():
         response = cursor.fetchall()
         cursor.execute('''UPDATE release SET visited = true WHERE id = {};'''.format(id))
         connection.commit()
-        print(response, response[0])
-        number = int(response[0][0])
-        if number <= 246:
-            row = number // 25
-            place = number % 25
+        visited = response[0][0]
+        if id <= 246:
+            row = id // 25
+            place = id % 25
         else:
             row = 11
-            place = number - 246
+            place = id - 246
         return json.dumps({
             "num": response[0],
             "name": response[1],
@@ -69,7 +68,7 @@ def json_example():
         })
     except (Exception, psycopg2.Error) as error:
         print(error)
-        return json.dumps({"res": "w"})
+        return json.dumps({"name": "err"})
 
 @app.route('/wake-up')
 def wake_up():
