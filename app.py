@@ -27,7 +27,7 @@ def table():
                                           port="5432",
                                           database="df87fg6nok0dv8")
             cursor = connection.cursor()
-            cursor.execute("SELECT * from qr_students")
+            cursor.execute("SELECT * from release")
             connection.commit()
             response = cursor.fetchall()
             return render_template('table/table.html', data=sorted(response))
@@ -40,7 +40,7 @@ def json_example():
     req_data = request.get_json()
     id = req_data['id']
     print(json.dumps({'id': id}))
-    insert_data = '''SELECT has_come from qr_students WHERE id = {};'''.format(id)
+    insert_data = '''SELECT visited from release WHERE id = {};'''.format(id)
     try:
         connection = psycopg2.connect(user="mnaoikjnojorsv",
                                       password="dd47b86a853ec65e1a76a003a07d717ecfc20af547721d750042bafdfbf37520",
@@ -51,7 +51,7 @@ def json_example():
         cursor.execute(insert_data)
         connection.commit()
         response = cursor.fetchall()[0][0]
-        cursor.execute('''UPDATE qr_students SET has_come = true WHERE id = {};'''.format(id))
+        cursor.execute('''UPDATE visited SET visited = true WHERE id = {};'''.format(id))
         connection.commit()
         return json.dumps({"res": response})
     except (Exception, psycopg2.Error) as error:

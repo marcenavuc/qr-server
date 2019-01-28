@@ -7,9 +7,9 @@ try:
                                   port = "5432",
                                   database = "df87fg6nok0dv8")
     cursor = connection.cursor()
-    data = pd.read_csv('data.csv', header=0, index_col="№")
+    data = pd.read_csv('data_base.csv', header=0, index_col="№")
     for name in data["ФИО выпускника"]:
-        ins_data = '''INSERT INTO qr_students(name, has_come) VALUES ('{}', 'f');'''.format(name)
+        ins_data = '''INSERT INTO release(name, visited) VALUES ('{}', 'f');'''.format(name)
         cursor.execute(ins_data)
         connection.commit()
         #response = cursor.fetchall()[0][0]
