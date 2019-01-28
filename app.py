@@ -64,7 +64,8 @@ def json_example():
             "num": response[0],
             "name": response[1],
             "row": row,
-            "place": place
+            "place": place,
+            "visited": visited
         })
     except (Exception, psycopg2.Error) as error:
         print(error)
