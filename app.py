@@ -53,6 +53,7 @@ def json_example():
         response = cursor.fetchall()
         cursor.execute('''UPDATE release SET visited = true WHERE id = {};'''.format(id))
         connection.commit()
+        print(response, response[0])
         number = int(response[0])
         if number <= 246:
             row = number // 25
