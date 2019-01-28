@@ -56,7 +56,7 @@ def json_example():
         print(response, response[0], id)
         visited = response[0]
         if id <= 246:
-            row = id // 25
+            row = (id // 25) + 1
             place = id % 25
         else:
             row = 11
