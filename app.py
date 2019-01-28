@@ -53,6 +53,7 @@ def json_example():
         response = cursor.fetchall()
         cursor.execute('''UPDATE release SET visited = true WHERE id = {};'''.format(id))
         connection.commit()
+        print(response, response[0], id)
         visited = response[0]
         if id <= 246:
             row = id // 25
@@ -61,8 +62,7 @@ def json_example():
             row = 11
             place = id - 246
         return json.dumps({
-            "num": response[0],
-            "name": response[1],
+            "num": id,
             "row": row,
             "place": place,
             "visited": visited
