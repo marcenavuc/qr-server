@@ -54,7 +54,7 @@ def json_example():
         cursor.execute('''UPDATE release SET visited = true WHERE id = {};'''.format(id))
         connection.commit()
         print(response, response[0])
-        number = int(response[0])
+        number = int(response[0][0])
         if number <= 246:
             row = number // 25
             place = number % 25
