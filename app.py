@@ -53,12 +53,13 @@ def json_example():
         response = cursor.fetchall()
         cursor.execute('''UPDATE release SET visited = true WHERE id = {};'''.format(id))
         connection.commit()
-        if response[0] <= 246:
-            row = response[0] // 25
-            place = response[0] % 25
+        number = int(response[0])
+        if number <= 246:
+            row = number // 25
+            place = number % 25
         else:
             row = 11
-            place = response[0] - 246
+            place = number - 246
         return json.dumps({
             "num": response[0],
             "name": response[1],
