@@ -62,7 +62,6 @@ def json_example():
             row = 11
             place = id - 246
         return json.dumps({
-            "num": id,
             "row": row,
             "place": place,
             "visited": visited
